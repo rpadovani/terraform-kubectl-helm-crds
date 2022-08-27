@@ -26,7 +26,7 @@ Alongside, let's specify the CRDs we want to manage:
 
 ```terraform
 module "kube_prometheus_stack_crds" {
-    source = "rpadovani/manager/crds"
+    source = "rpadovani/helm-crds/kubectl"
     # version = "0.1.0" # Specify here the latest version of the module
 
     crds_urls = [
