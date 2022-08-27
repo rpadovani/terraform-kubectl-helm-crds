@@ -1,12 +1,12 @@
 # terraform-crds-manager
 
-Manage Helm CRDs with Terraform. 
+Manage Helm Custom Resource Definitions (CRDs) with Terraform. 
 
 ## Why?
 
 Helm is a remarkable piece of technology to manage your Kubernetes deployment, and used along Terraform is perfect for deploying following the GitOps strategy.
 
-However, Helm has a limitation: [it doesn't manage the lifecycle of Custom Resource Definitions][0] (CRDs), meaning it will only install the CRD during the first installation of a chart. Subsequent chart upgrades will not add or remove CRDs, even if the CRDs have changed.
+However, Helm has a limitation: [it doesn't manage the lifecycle of CRDs][0], meaning it will only install the CRDs during the first installation of a chart. Subsequent chart upgrades will not add or remove CRDs, even if the CRDs have changed.
 
 With this module, Terraform can apply the CRDs on its own, managing their lifecycle alongside the Helm chart they belong to.
 
