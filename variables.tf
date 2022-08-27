@@ -1,9 +1,10 @@
-variable "crds_links" {
+variable "crds_urls" {
   type        = list(string)
-  description = "List of the custom resource definitions we need to manage"
+  description = "List of the URLs where custom resource definitions are declared."
 }
 
-variable "server_side" {
-  type    = bool
-  default = false
+variable "server_side_apply" {
+  type        = bool
+  default     = false
+  description = "Optional. Allow using server-side-apply method. Default false."
 }
