@@ -27,7 +27,7 @@ Alongside, let's specify the CRDs we want to manage:
 ```terraform
 module "kube_prometheus_stack_crds" {
     source = "rpadovani/helm-crds/kubectl"
-    # version = "0.1.0" # Specify here the latest version of the module
+    version = "0.1.1"
 
     crds_urls = [
         "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-${var.chart_version}/charts/kube-prometheus-stack/crds/crd-alertmanagerconfigs.yaml",
@@ -45,6 +45,21 @@ module "kube_prometheus_stack_crds" {
 There are two important things to notice here:
 - we use the raw version of the file: we want to have only the pure YAML manifest to give to the module;
 - we specify the version in the URL, so we can be sure the CRDs are kept in sync with the Helm chart we are deploying;
+
+The Helm resource then can depend on the newly created resource, and we can also disable there the management of the CRDs:
+
+```terraform
+resource "helm_release" "kube_prometheus_stack" {
+  name       = "kube-prometheus-stack"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "kube-prometheus-stack"
+  version    = "${var.chart_version}" # <- With this, we keep in sync Helm Chart and CRDs
+  
+  skip_crds = true # Optional, given that they should be skipped if they are already present
+  
+  depends_on = [module.kube_prometheus_stack_crds]
+}
+```
 
 
 [0]: https://helm.sh/docs/chart_best_practices/custom_resource_definitions/
