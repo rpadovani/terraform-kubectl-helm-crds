@@ -22,5 +22,7 @@ resource "kubectl_manifest" "crd" {
   depends_on = [null_resource.status_check]
   yaml_body  = data.http.yaml_file[each.value].response_body
 
+  force_new         = var.force_new
   server_side_apply = var.server_side_apply
+  force_conflicts   = var.force_conflicts
 }
