@@ -27,7 +27,7 @@ Alongside, let's specify the CRDs we want to manage:
 ```terraform
 module "kube_prometheus_stack_crds" {
     source = "rpadovani/helm-crds/kubectl"
-    version = "0.1.1"
+    version = "0.2.0"
 
     crds_urls = [
         "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-${var.chart_version}/charts/kube-prometheus-stack/crds/crd-alertmanagerconfigs.yaml",
@@ -60,7 +60,6 @@ resource "helm_release" "kube_prometheus_stack" {
   depends_on = [module.kube_prometheus_stack_crds]
 }
 ```
-
 
 [0]: https://helm.sh/docs/chart_best_practices/custom_resource_definitions/
 [2]: https://registry.terraform.io/providers/gavinbunney/kubectl/1.14.0
