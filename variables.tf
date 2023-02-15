@@ -20,3 +20,9 @@ variable "force_conflicts" {
   default     = false
   description = "Optional. Allow using force_conflicts. Default false."
 }
+
+variable "apply_only" {
+  type        = bool
+  default     = false
+  description = "Optional. When set to true, the module won't ever delete a CRD. Default false."
+}
