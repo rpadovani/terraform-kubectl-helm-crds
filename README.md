@@ -29,7 +29,7 @@ Alongside, let's specify the CRDs we want to manage:
 ```terraform
 module "kube_prometheus_stack_crds" {
     source = "rpadovani/helm-crds/kubectl"
-    version = "0.2.0"
+    version = "0.3.0"
 
     crds_urls = [
         "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-${var.chart_version}/charts/kube-prometheus-stack/crds/crd-alertmanagerconfigs.yaml",
