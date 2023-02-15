@@ -25,4 +25,5 @@ resource "kubectl_manifest" "crd" {
   force_new         = var.force_new
   server_side_apply = var.server_side_apply
   force_conflicts   = var.force_conflicts
+  apply_only        = var.apply_only
 }

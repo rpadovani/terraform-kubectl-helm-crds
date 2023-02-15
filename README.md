@@ -16,6 +16,8 @@ Given a list of links to CRDs definitions, input them to the module. It is stron
 
 This module uses the [kubectl Terraform provider][2], so you need to configure it, as [illustrated in their guide][3].
 
+The full list of optional variables for this module is available on the [Terraform website][6].
+
 ### Example
 
 The [kube-promeheus-stack][4] requires eight different CRDs: managing them manually is quite time-consuming, so it is the perfect candidate for this module.
@@ -66,3 +68,4 @@ resource "helm_release" "kube_prometheus_stack" {
 [3]: https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs#configuration
 [4]: https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/README.md
 [5]: https://registry.terraform.io/providers/hashicorp/helm/latest/docs
+[6]: https://registry.terraform.io/modules/rpadovani/helm-crds/kubectl/latest?tab=inputs
